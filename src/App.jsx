@@ -11,13 +11,45 @@ import "./App.css";
 function App() {
   const [items, setItems] = useState(mockBacklog);
 
+  function addProgress(id) {
+    setItems(
+      items.map((item) => {
+        if (item.id !== id) return item;
+        if (item.total && item.progress >= item.total) return item;
+        return { ...item, progress: item.progress + 1 };
+      })
+    );
+  }
+
+  function changeStatus(id, newStatus) {
+    setItems(
+      items.map((item) =>
+        item.id === id ? { ...item, status: newStatus } : item
+      )
+    );
+  }
+
+  function deleteItem(id) {
+    setItems(items.filter((item) => item.id !== id));
+  }
+
   return (
     <HashRouter>
       <div className="app">
         <Header />
         <main>
           <Routes>
-            <Route path="/" element={<Library items={items} />} />
+            <Route
+              path="/"
+              element={
+                <Library
+                  items={items}
+                  addProgress={addProgress}
+                  changeStatus={changeStatus}
+                  deleteItem={deleteItem}
+                />
+              }
+            />
             <Route path="/add-game" element={<AddGame />} />
             <Route path="/search-anime" element={<SearchAnime />} />
             <Route path="*" element={<NotFound />} />
