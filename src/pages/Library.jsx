@@ -1,8 +1,14 @@
-function Library() {
+import BacklogCard from "../components/BacklogCard";
+
+function Library({ items }) {
   return (
     <section>
       <h2>My Library</h2>
-      <p>Your games and anime will show up here.</p>
+      <div className="card-grid">
+        {items.map((item) => (
+          <BacklogCard key={item.id} item={item} />
+        ))}
+      </div>
     </section>
   );
 }
