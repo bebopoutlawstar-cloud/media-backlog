@@ -1,8 +1,10 @@
-function AddGame() {
+import GameForm from "../components/GameForm";
+
+function AddGame({ addItem }) {
   return (
     <section>
       <h2>Add a Game</h2>
-      <p>The game form will go here.</p>
+      <GameForm addItem={addItem} />
     </section>
   );
 }

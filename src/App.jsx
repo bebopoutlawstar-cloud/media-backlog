@@ -32,7 +32,9 @@ function App() {
   function deleteItem(id) {
     setItems(items.filter((item) => item.id !== id));
   }
-
+  function addItem(newItem) {
+    setItems([...items, newItem]);
+  }
   return (
     <HashRouter>
       <div className="app">
@@ -50,7 +52,7 @@ function App() {
                 />
               }
             />
-            <Route path="/add-game" element={<AddGame />} />
+            <Route path="/add-game" element={<AddGame addItem={addItem} />} />
             <Route path="/search-anime" element={<SearchAnime />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
