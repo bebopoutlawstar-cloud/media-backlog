@@ -4,7 +4,7 @@ import BacklogCard from "../components/BacklogCard";
 import FilterBar from "../components/FilterBar";
 import StatsPanel from "../components/StatsPanel";
 
-function Library({ items, addProgress, changeStatus, deleteItem }) {
+function Library({ items, addProgress, changeStatus, deleteItem, changeRating }) {
   const [search, setSearch] = useState("");
   const [typeFilter, setTypeFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
@@ -62,6 +62,7 @@ function Library({ items, addProgress, changeStatus, deleteItem }) {
               addProgress={addProgress}
               changeStatus={changeStatus}
               deleteItem={deleteItem}
+              changeRating={changeRating}
             />
           ))}
         </div>

@@ -195,3 +195,20 @@ button:disabled {
   font-size: 0.85rem;
   opacity: 0.8;
 }
+
+.star-rating {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  padding: 0 2px;
+  font-size: 1.4rem;
+  color: #999;
+  background: none;
+  border: none;
+}
+
+.star.filled {
+  color: #f5b301;
+}

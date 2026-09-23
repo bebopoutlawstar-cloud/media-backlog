@@ -1,14 +1,25 @@
-function BacklogCard({ item, addProgress, changeStatus, deleteItem }) {
-  const stars = "★".repeat(item.rating) + "☆".repeat(5 - item.rating);
+import StarRating from "./StarRating";
 
+function BacklogCard({ item, addProgress, changeStatus, deleteItem, changeRating }) {
   return (
     <article className="card">
+      {item.image && (
+        <img
+          src={item.image}
+          alt={item.title}
+          className={item.type === "anime" ? "poster" : "game-cover"}
+          onError={(e) => {
+            e.target.style.display = "none";
+          }}
+        />
+      )}
+
       <span className="badge">{item.type}</span>
       <h3>{item.title}</h3>
       <p>Platform: {item.platform}</p>
 
       <label>
-        Status:{" "}
+        Status
         <select
           value={item.status}
           onChange={(e) => changeStatus(item.id, e.target.value)}
@@ -20,12 +31,15 @@ function BacklogCard({ item, addProgress, changeStatus, deleteItem }) {
       </label>
 
       {item.type === "anime" ? (
-        <p>Episode {item.progress} / {item.total}</p>
+        <p>Episode {item.progress} / {item.total ?? "?"}</p>
       ) : (
         <p>{item.progress} hrs played</p>
       )}
 
-      <p className="stars">{stars}</p>
+      <StarRating
+        rating={item.rating}
+        onRate={(newRating) => changeRating(item.id, newRating)}
+      />
 
       <div className="card-actions">
         <button onClick={() => addProgress(item.id)}>+1</button>

@@ -36,6 +36,13 @@ function App() {
       )
     );
   }
+    function changeRating(id, newRating) {
+    setItems(
+      items.map((item) =>
+        item.id === id ? { ...item, rating: newRating } : item
+      )
+    );
+  }
 
   function deleteItem(id) {
     setItems(items.filter((item) => item.id !== id));
@@ -57,6 +64,7 @@ function App() {
                   addProgress={addProgress}
                   changeStatus={changeStatus}
                   deleteItem={deleteItem}
+                  changeRating={changeRating}
                 />
               }
             />
