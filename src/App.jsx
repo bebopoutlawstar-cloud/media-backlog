@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Library from "./pages/Library";
@@ -9,7 +9,14 @@ import mockBacklog from "./data/mockBacklog";
 import "./App.css";
 
 function App() {
-  const [items, setItems] = useState(mockBacklog);
+  const [items, setItems] = useState(() => {
+    const saved = localStorage.getItem("media-backlog");
+    return saved ? JSON.parse(saved) : mockBacklog;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("media-backlog", JSON.stringify(items));
+  }, [items]);
 
   function addProgress(id) {
     setItems(
