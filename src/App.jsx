@@ -6,6 +6,7 @@ import AddGame from "./pages/AddGame";
 import SearchAnime from "./pages/SearchAnime";
 import NotFound from "./pages/NotFound";
 import mockBacklog from "./data/mockBacklog";
+import SearchGames from "./pages/SearchGames";
 import "./App.css";
 
 function App() {
@@ -60,6 +61,10 @@ function App() {
               }
             />
             <Route path="/add-game" element={<AddGame addItem={addItem} />} />
+                        <Route
+              path="/search-games"
+              element={<SearchGames items={items} addItem={addItem} />}
+            />
             <Route
               path="/search-anime"
               element={<SearchAnime items={items} addItem={addItem} />}

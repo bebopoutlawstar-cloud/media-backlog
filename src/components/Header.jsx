@@ -6,8 +6,9 @@ function Header() {
       <h1 className="logo">Media Backlog</h1>
       <nav className="nav">
         <NavLink to="/" end>Library</NavLink>
-        <NavLink to="/add-game">Add Game</NavLink>
+        <NavLink to="/search-games">Search Games</NavLink>
         <NavLink to="/search-anime">Search Anime</NavLink>
+        <NavLink to="/add-game">Add Game</NavLink>
       </nav>
     </header>
   );

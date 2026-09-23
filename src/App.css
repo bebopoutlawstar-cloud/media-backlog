@@ -184,3 +184,14 @@ button:disabled {
     width: 100%;
   }
 }
+.game-cover {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.platforms {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
