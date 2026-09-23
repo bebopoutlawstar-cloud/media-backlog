@@ -60,7 +60,10 @@ function App() {
               }
             />
             <Route path="/add-game" element={<AddGame addItem={addItem} />} />
-            <Route path="/search-anime" element={<SearchAnime />} />
+            <Route
+              path="/search-anime"
+              element={<SearchAnime items={items} addItem={addItem} />}
+            />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
